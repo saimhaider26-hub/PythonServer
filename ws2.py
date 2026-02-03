@@ -45,6 +45,9 @@ class WSGIServer(object):
         self.parse_request(request_data)
 
         env = self.get_environ()
+
+        # HANDOFF: This is where we plug the Web Framework (Django/Flask/Pyramid/WSGI) into our Server.
+        # We give it the request data (env) and it gives us back the HTML (result).
         result = self.application(env, self.start_response)
 
         
